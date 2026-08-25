@@ -1,0 +1,58 @@
+site_name: Melisa'yla Biyoinformatik
+site_description: "Gerçek verilerle, uçtan uca biyoinformatik projeleri ve 76 analizlik bir atlas."
+# Siteyi yayınladıktan sonra bu satırı kendi adresinle açıp doldur:
+# site_url: https://KULLANICIADIN.github.io/melisayla-biyoinformatik/
+
+theme:
+  name: material
+  language: tr
+  font:
+    text: IBM Plex Sans
+    code: IBM Plex Mono
+  palette:
+    scheme: lila
+  features:
+    - navigation.tabs
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.follow
+
+nav:
+  - Ana Sayfa: index.md
+  - Projeler:
+      - Genel bakış: projeler/index.md
+      - "1 · RNA-seq (KO vs. yabani tip)": projeler/rna-seq.md
+      - "2 · scRNA-seq (Tek hücre)": projeler/scrna.md
+      - "3 · Spatial transkriptomik": projeler/spatial.md
+      - "4 · DepMap / CRISPR ekranları": projeler/depmap.md
+      - "5 · Klinik varyant yorumlama": projeler/varyant-cagirma.md
+      - "6 · GWAS (Popülasyon)": projeler/gwas.md
+  - Analiz Atlası:
+      - Atlas nedir?: atlas/index.md
+      - Bulk transkriptomik: atlas/bulk.md
+      - Tek hücre: atlas/tek-hucre.md
+      - Spatial: atlas/spatial.md
+      - Fonksiyonel genomik: atlas/fonksiyonel.md
+      - Tamamlayıcı analizler: atlas/tamamlayici.md
+  - Hakkında: hakkinda.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_css:
+  - stylesheets/ozel.css
+
+extra:
+  generator: false
+
+copyright: "© 2026 Melisa'yla Biyoinformatik · İçerik CC BY-SA 4.0"
