@@ -1,7 +1,7 @@
-site_name: Melisa'yla Biyoinformatik
+site_name: Melisa ile Biyoinformatik
 site_description: "Gerçek verilerle, uçtan uca biyoinformatik projeleri ve 76 analizlik bir atlas."
 # Siteyi yayınladıktan sonra bu satırı kendi adresinle açıp doldur:
-# site_url: https://KULLANICIADIN.github.io/melisayla-biyoinformatik/
+# site_url: https://KULLANICIADIN.github.io/melisa-ile-biyoinformatik/
 
 theme:
   name: material
@@ -55,4 +55,4 @@ extra_css:
 extra:
   generator: false
 
-copyright: "© 2026 Melisa'yla Biyoinformatik · İçerik CC BY-SA 4.0"
+copyright: "© 2026 Melisa ile Biyoinformatik · İçerik CC BY-SA 4.0"
