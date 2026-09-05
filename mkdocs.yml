@@ -25,6 +25,7 @@ nav:
       - Genel bakış: projeler/index.md
       - "1 · RNA-seq (KO vs. yabani tip)": projeler/rna-seq.md
       - "1.1 · RNA-seq nedir, neden yapılır?": projeler/rna-seq-01.md
+      - "1.2 · Veri: sayılar nereden geliyor?": projeler/rna-seq-veri.md
       - "2 · scRNA-seq (Tek hücre)": projeler/scrna.md
       - "3 · Spatial transkriptomik": projeler/spatial.md
       - "4 · DepMap / CRISPR ekranları": projeler/depmap.md
