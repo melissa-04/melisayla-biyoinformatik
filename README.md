@@ -1,4 +1,4 @@
-# Melisa'yla Biyoinformatik — kurulum ve yayınlama (Windows)
+# Melisa'yla Biyoinformatik
 
 Gerçek verilerle, uçtan uca biyoinformatik projeleri ve 76 analizlik bir Analiz Atlası.
 
