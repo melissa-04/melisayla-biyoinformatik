@@ -5,9 +5,12 @@
 
 [Colab'da aç](https://colab.research.google.com/github/melissa-04/melisayla-biyoinformatik/blob/main/notebooks/rna-seq/08_durusma.ipynb){ .md-button .md-button--primary }
 
+!!! warning "Düzeltme"
+    Bu rehberin ilk sürümü Ahsp'yi "nakavt edilen gen" ilan ediyordu; yanlıştı. Serinin deneyi bir **Klf1** nakavtıdır (bkz. Rehber 1); Ahsp, KLF1'in en bağımlı hedeflerinden biri olduğu için tablonun en dibine çöken gendir — sanık değil, baş kurban. Hatanın anatomisi ve kanıtları Rehber 11'de. Aşağıdaki sayıların ve yöntemin tamamı geçerlidir.
+
 ## Sanığın açıklanışı
 
-Geçen rehberin avında bulduğunuz gen **Ahsp**: serbest alfa-globin zincirlerini çökelmeden tutan eritroid bir şaperon, yani bu serinin gürültücü yıldızı Hba-a1'in bakıcısı. Nakavt farelerde susturulan gen bu. Kan fabrikası benzetmesiyle söylersek, sıradan bir işçi değil montaj hattının ustabaşı sökülmüş — ve yedi rehberdir hazırladığımız her şey tek soruya akıyor: istatistik bu sökümü görüyor mu, onunla birlikte başka kimleri mahkûm ediyor?
+Geçen rehberin avında bulduğunuz gen **Ahsp**: serbest alfa-globin zincirlerini çökelmeden tutan eritroid bir şaperon, yani bu serinin gürültücü yıldızı Hba-a1'in bakıcısı. Tablonun en dibine çöken gen bu — ve yedi rehberdir hazırladığımız her şey tek soruya akıyor: istatistik bu çöküşü görüyor mu, onunla birlikte başka kimleri mahkûm ediyor?
 
 ## Mahkemenin dili
 
@@ -21,7 +24,7 @@ Yedinci rehberde on satır pandas ile kurduğunuz cetvel vardı ya; defterde onu
 
 ## Sanığın karnesi
 
-Ahsp'nin satırı: log2FoldChange **−12,94** — yani 2¹²·⁹⁴ ≈ **7.850 kat** çöküş — ve padj **3×10⁻²⁶** mertebesinde. Nakavt gerçekten nakavtmış; istatistik, sizin yedinci rehberde çıplak gözle bulduğunuz sanığı ezici kanıtla mahkûm ediyor. Ama yalnız değil: benim koşumda padj < 0,05 ve |log2FC| > 1 eşiğini birden geçen **1.385 gen** var — 630'u yükselmiş, 755'i düşmüş. Ustabaşı gidince atölyede devrilenlerin listesi bu.
+Ahsp'nin satırı: log2FoldChange **−12,94** — yani 2¹²·⁹⁴ ≈ **7.850 kat** çöküş — ve padj **3×10⁻²⁶** mertebesinde. Çöküş gerçekmiş; istatistik, yedinci rehberde çıplak gözle bulduğunuz geni ezici kanıtla doğruluyor. Ama yalnız değil: benim koşumda padj < 0,05 ve |log2FC| > 1 eşiğini birden geçen **1.385 gen** var — 630'u yükselmiş, 755'i düşmüş. Ustabaşı gidince atölyede devrilenlerin listesi bu.
 
 Beraat edenler de öğretici. Yedinci rehberde gözünüze çarpan Gapdh, +0,54'lük kıpırtısıyla padj 0,058'de eşiğe takıldı: göz görmüştü, jüri ikna olmadı. Pasta deneyimizin kahramanı Afp −0,04 ile taş gibi duruyor — onu deneyde biz delirtmiştik, gerçekte kılı kıpırdamıyor. Ve işin en tuhafı: sanığın korumakla görevli olduğu Hba-a1, −1,5 civarı düşmüş görünmesine rağmen padj 0,27 ile beraat etti. Globin cephesinde işlerin göründüğünden karışık olduğunun ilk işareti bu; üçüncü görev tam oraya gidiyor.
 
