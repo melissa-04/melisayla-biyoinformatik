@@ -1,0 +1,1558 @@
+
+<!doctype html>
+<html lang="tr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Gerçek verilerle, uçtan uca biyoinformatik projeleri ve 76 analizlik bir atlas.">
+      
+      
+      
+      
+        <link rel="prev" href="../rna-seq-06/">
+      
+      
+        <link rel="next" href="../rna-seq-08/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>1.8 · Normalizasyon: ortak cetvel - Melisa ile Biyoinformatik</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/ozel.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="lila" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#normalizasyon-herkese-ayn-cetvel" class="md-skip">
+          Ana içeriğe geç
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Başlık">
+    <a href="../.." title="Melisa ile Biyoinformatik" class="md-header__button md-logo" aria-label="Melisa ile Biyoinformatik" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Melisa ile Biyoinformatik
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1.8 · Normalizasyon: ortak cetvel
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Ara" placeholder="Ara" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Ara">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Temizle" aria-label="Temizle" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Arama başlatılıyor
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Sekmeler" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Ana Sayfa
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Projeler
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../atlas/" class="md-tabs__link">
+          
+  
+  
+  Analiz Atlası
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../hakkinda/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Hakkında
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigasyon" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Melisa ile Biyoinformatik" class="md-nav__button md-logo" aria-label="Melisa ile Biyoinformatik" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Melisa ile Biyoinformatik
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ana Sayfa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projeler
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projeler
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Genel bakış
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rna-seq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 · RNA-seq (KO vs. yabani tip)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rna-seq-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 · RNA-seq nedir, neden yapılır?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rna-seq-veri/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 · Veri: sayılar nereden geliyor?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rna-seq-02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 · FASTQ ve kalite skorları
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rna-seq-03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.4 · Kalite kontrol: FastQC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rna-seq-04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.5 · Kantifikasyon: Salmon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rna-seq-05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.6 · Kara kutu: pseudoalignment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rna-seq-06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.7 · Sayım tablosundan analize
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.8 · Normalizasyon: ortak cetvel
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.8 · Normalizasyon: ortak cetvel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="İçindekiler">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      İçindekiler
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#238in-borcu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2,38'in borcu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#milyon-basna-cpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Milyon başına: CPM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#milyon-bir-pastadr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Milyon bir pastadır
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deseq2nin-cetveli-oranlarn-medyan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DESeq2'nin cetveli: oranların medyanı
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normalizasyondan-sonra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Normalizasyondan sonra
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neler-ters-gider" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Neler ters gider?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kendin-dene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kendin dene
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rna-seq-08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.9 · Duruşma: PyDESeq2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rna-seq-09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.10 · Zenginleştirme: ortak süreçler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rna-seq-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.11 · Harita: PCA ve ısı haritası
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rna-seq-11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.12 · Sanık mı, kurban mı?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rna-seq-12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.13 · Kapanış: uçtan uca
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scrna/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 · scRNA-seq (Tek hücre)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spatial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 · Spatial transkriptomik
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../depmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 · DepMap / CRISPR ekranları
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../varyant-cagirma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5 · Klinik varyant yorumlama
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gwas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6 · GWAS (Popülasyon)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analiz Atlası
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analiz Atlası
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atlas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atlas nedir?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atlas/bulk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bulk transkriptomik
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atlas/tek-hucre/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tek hücre
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atlas/spatial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spatial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atlas/fonksiyonel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fonksiyonel genomik
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atlas/tamamlayici/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tamamlayıcı analizler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hakkinda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hakkında
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="İçindekiler">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      İçindekiler
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#238in-borcu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2,38'in borcu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#milyon-basna-cpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Milyon başına: CPM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#milyon-bir-pastadr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Milyon bir pastadır
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deseq2nin-cetveli-oranlarn-medyan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DESeq2'nin cetveli: oranların medyanı
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normalizasyondan-sonra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Normalizasyondan sonra
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neler-ters-gider" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Neler ters gider?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kendin-dene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kendin dene
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="normalizasyon-herkese-ayn-cetvel">Normalizasyon: herkese aynı cetvel</h1>
+<div class="admonition question">
+<p class="admonition-title">Bu rehberde</p>
+<p>Derinlik farkının yarattığı yanılsamayı görecek, CPM'in neyi çözüp neyi çözemediğini bir deneyle test edecek ve DESeq2'nin size factor cetvelini kendi elinizle kuracaksınız.</p>
+</div>
+<p><a class="md-button md-button--primary" href="https://colab.research.google.com/github/melissa-04/melisayla-biyoinformatik/blob/main/notebooks/rna-seq/07_normalizasyon.ipynb">Colab'da aç</a></p>
+<h2 id="238in-borcu">2,38'in borcu</h2>
+<p>Geçen rehberin son sorusu bir sayıydı: WT_3'ün toplamı WT_1'in kaç katı? Benim koşumda 2,38 — yazıda "2,4" diye yuvarladığım sayının ta kendisi. Bu sayı masumken tehlikeli: Gapdh gibi "hep açık" bilinen bir gene bakın. Üç WT örneği aynı genotipin kopyaları, ama Gapdh'nin ham sayımı WT_1'de 14.363 iken WT_3'te 32.744; 2,28 kat. Gen coşmadı, makine daha uzun dinledi. Ham sayılarla iki örneği karşılaştırmak, biri fısıldarken biri megafonla konuşan iki insanın "hangisi daha heyecanlı" yarışını ses düzeyinden okumaya benzer.</p>
+<h2 id="milyon-basna-cpm">Milyon başına: CPM</h2>
+<p>İlk düzeltme basit: her sayımı kendi kütüphanesine böl, milyonla çarp. Adı CPM (counts per million) ve anlamı şu: bu gen, o örnekteki her bir milyon okumadan kaçını aldı? Derinlik paydaya girince yanılsama söner: Gapdh'nin WT CPM'leri benim koşumda 1.056, 1.210 ve 1.012 — WT_3'ün megafonu elinden alındı, üç kopya aynı sesle konuşuyor. Çözülen sorunun adını koyalım: <strong>derinlik</strong>. Ama rehber burada bitmiyor, çünkü CPM'in gizli bir varsayımı var.</p>
+<h2 id="milyon-bir-pastadr">Milyon bir pastadır</h2>
+<p>Varsayım şu: milyon, herkese adil dağıtılan bir bütçedir. Değildir; milyon sabit bir pastadır. Bir gen delirip dev bir dilim alırsa, sayımı hiç değişmeyen bütün öteki genlerin dilimi küçülür.</p>
+<p>Defterde bunu bir deneyle gösteriyorum: WT_1'in kopyasını alıp <em>sadece</em> Afp'yi 50 katına çıkardım; Gapdh, Actb ve Slc4a1'in sayımlarına dokunmadım. Sonuç: sahte kütüphane %26 büyüdü ve üç suçsuz genin CPM'i de tam %21 düştü — Gapdh 1.056'dan 836'ya, Actb 1.933'ten 1.530'a, Slc4a1 5.997'den 4.748'e. Buradaki parmak izi önemli: herkes <em>aynı oranda</em> düşüyorsa suç genlerde değil, pastadadır. Buna kompozisyon etkisi denir ve bizim verinin hikâyesiyle doğrudan bağı var: eritroid dokuda globin mRNA'sı okumaların yarısına varan bir dilim yiyebilir; Veri sayfasındaki arındırmanın bütün sebebi, pastayı bu devden kurtarmaktı.</p>
+<h2 id="deseq2nin-cetveli-oranlarn-medyan">DESeq2'nin cetveli: oranların medyanı</h2>
+<p>Kompozisyona dayanıklı tarif, DESeq2'nin <em>median-of-ratios</em> yöntemi. Üç adım: her gen için bütün örneklerin geometrik ortalamasını al — bu hayali "referans örnek" olur; her örnekte her genin sayımını referansa oranla; o örneğin size factor'ı bu oranların medyanıdır. Medyanın sihri şurada: Afp gibi bir dev delirse bile sıralamada sadece bir gendir, ortadaki sıradan gen konuşur; cetveli devler değil, tipik gen kurar.</p>
+<p>Defterde bu cetveli hazır fonksiyon olmadan, on satır pandas ile kuruyoruz. Benim koşumda referansa 18.470 gen girdi (geometrik ortalama sıfır sevmez; her örnekte sıfırdan büyük olan genler) ve altı faktör şöyle çıktı: WT_1 için 0,76 · WT_2 için 0,63 · WT_3 için 1,98 · KO_1 için 0,88 · KO_2 için 1,28 · KO_3 için 0,96. Bunları kütüphane büyüklüğünden türeyen faktörlerle karşılaştırınca sapma %2 ile %15 arasında — ve sapmanın <em>yönü</em> asıl haber: WT'lerde hep aşağı, KO'larda hep yukarı. İki grup, milyonlarını farklı genlere harcıyor. Kütüphane büyüklüğü bu farkı göremez; oranların medyanı görür. Aynı tarifi sekizinci rehberde PyDESeq2 kendi içinde işletecek ve el yapımı cetvelimizle karşılaştırma şansımız olacak.</p>
+<h2 id="normalizasyondan-sonra">Normalizasyondan sonra</h2>
+<p>Normalize sayım = ham sayım / size factor. Gapdh'nin WT üçlüsü artık hizada. Ama bir inceliğe dikkat: normalize <em>toplamlar</em> eşitlenmez — benim koşumda WT'ler 16-19 milyon bandında, KO'lar 14 milyon civarında kaldı. Bu bir hata değil; medyan-oran toplamı değil <em>tipik geni</em> hizalar. Grafikte kalan WT-KO farkı, az önce ölçtüğümüz kompozisyon farkının imzasıdır: bir grubun pastasında devler daha çok yer kaplıyor.</p>
+<p>Bir de sınır çizelim: normalizasyon teknik cetveli düzeltir, biyolojiye dokunmaz. Gapdh'nin KO sütunlarındaki yüksekliği normalizasyondan sonra da duruyor; "bu fark gerçek mi, gürültü mü" sorusunun cevabı cetvelde değil istatistikte — yani bir sonraki rehberde.</p>
+<h2 id="neler-ters-gider">Neler ters gider?</h2>
+<p>Üç klasik tuzak. Birincisi ve en sinsisi: PyDESeq2'ye normalize edilmiş tablo vermek. DESeq2 ailesi <strong>ham sayım</strong> ister; cetveli kendi kurar. Normalize veri verirseniz çifte normalizasyon olur ve hata mesajı bile almadan yanlış sonuç alırsınız. Normalize tablo görselleştirme ve göz kontrolü içindir, modelin girdisi değil. İkincisi: CPM ile aynı örnek <em>içinde</em> iki farklı geni karşılaştırmak. Uzun genler sırf uzun oldukları için daha çok okuma toplar; örnek içi gen karşılaştırması uzunluğu da hesaba katan TPM'in işidir — dördüncü rehberdeki quant.sf dosyasının TPM sütununu hatırlayın. CPM örnekler arasını, TPM örnek içini konuşur. Üçüncüsü: size factor hesabında sıfırları unutmak. Geometrik ortalama tek bir sıfır görünce çöker; referansa yalnız her örnekte ifade edilen genlerin girmesi hile değil, tarifin parçasıdır.</p>
+<h2 id="kendin-dene">Kendin dene</h2>
+<p>Defterin sonunda üç görev var. Altı size factor'ı kendi koşunuzdan not edin; tablo da tarif de aynı olduğu için sayılarınız benimkilerle birebir çıkmalı. "Kütüphane büyüklüğüne bölmek yetmez, çünkü..." cümlesini bu rehberde gördüklerinizle tamamlayın. Ve bir av: normalize tabloda WT ortalaması 1.000'in üzerinde olup KO/WT oranı en küçük olan geni bulun. Adını bir kenara yazın ve kimseye söylemeyin; sekizinci rehber, baştan sona o genin duruşması olacak.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Altbilgi" >
+        
+          
+          <a href="../rna-seq-06/" class="md-footer__link md-footer__link--prev" aria-label="Önceki: 1.7 · Sayım tablosundan analize">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Önceki
+              </span>
+              <div class="md-ellipsis">
+                1.7 · Sayım tablosundan analize
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../rna-seq-08/" class="md-footer__link md-footer__link--next" aria-label="Sonraki: 1.9 · Duruşma: PyDESeq2">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sonraki
+              </span>
+              <div class="md-ellipsis">
+                1.9 · Duruşma: PyDESeq2
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © 2026 Melisa ile Biyoinformatik · İçerik CC BY-SA 4.0
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Kopyaland\u0131", "clipboard.copy": "Kopyala", "search.result.more.one": "Bu sayfada 1 tane daha", "search.result.more.other": "Bu sayfada # tane daha", "search.result.none": "E\u015fle\u015fen dok\u00fcman bulunamad\u0131", "search.result.one": "1 dok\u00fcman bulundu", "search.result.other": "# dok\u00fcman bulundu", "search.result.placeholder": "Aramaya ba\u015flamak i\u00e7in yaz\u0131n", "search.result.term.missing": "Eksik", "select.version": "Versiyon se\u00e7"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
