@@ -31,6 +31,7 @@ nav:
       - "1.5 · Kantifikasyon: Salmon": projeler/rna-seq-04.md
       - "1.6 · Kara kutu: pseudoalignment": projeler/rna-seq-05.md
       - "1.7 · Sayım tablosundan analize": projeler/rna-seq-06.md
+      - "1.8 · Normalizasyon: ortak cetvel": projeler/rna-seq-07.md
       - "2 · scRNA-seq (Tek hücre)": projeler/scrna.md
       - "3 · Spatial transkriptomik": projeler/spatial.md
       - "4 · DepMap / CRISPR ekranları": projeler/depmap.md
