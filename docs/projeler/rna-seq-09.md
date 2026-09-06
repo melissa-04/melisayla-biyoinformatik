@@ -31,7 +31,7 @@ Aynı testi yükselen 629 gene uygulayınca tepeye küçük bir set çıkıyor: 
 
 ## Tekrarlanabilirlik notu
 
-Bu seride yaşandı, buraya yazıyorum: aynı veri ve aynı kod, iki farklı pydeseq2 sürümünde bir genin padj sırasını 14'ten 1'e taşıdı, çünkü sürümler tek bir genin dispersiyonunu farklı kestirdi ve p değeri 10⁻⁶⁷'den 10⁻¹⁴⁵'e kaydı. İki ders: analiz raporuna araç sürümleri yazılır (defterde tek satırlık alışkanlığı var), ve bu mertebedeki p değerlerinde tekil sıralamaya değil kümeye güvenilir — iki koşuda da tepede aynı eritroid takım vardı, sadece dizilişleri farklıydı.
+Bu seride yaşandı, buraya yazıyorum: aynı veri, aynı kod ve aynı pydeseq2 sürümü, iki farklı yazılım ortamında (altta farklı pandas/scipy) bir genin padj sırasını 14'ten 1'e taşıdı, çünkü ortamlar tek bir genin dispersiyonunu farklı kestirdi ve p değeri 10⁻⁶⁷'den 10⁻¹⁴⁵'e kaydı. İki ders: analiz raporuna yalnız ana aracın değil bütün yığının sürümleri yazılır (defterde tek satırlık alışkanlığı var), ve bu mertebedeki p değerlerinde tekil sıralamaya değil kümeye güvenilir — iki koşuda da tepede aynı eritroid takım vardı, sadece dizilişleri farklıydı.
 
 ## Neler ters gider?
 
