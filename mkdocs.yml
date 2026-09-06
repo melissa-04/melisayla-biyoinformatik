@@ -33,6 +33,7 @@ nav:
       - "1.7 · Sayım tablosundan analize": projeler/rna-seq-06.md
       - "1.8 · Normalizasyon: ortak cetvel": projeler/rna-seq-07.md
       - "1.9 · Duruşma: PyDESeq2": projeler/rna-seq-08.md
+      - "1.10 · Zenginleştirme: ortak süreçler": projeler/rna-seq-09.md
       - "2 · scRNA-seq (Tek hücre)": projeler/scrna.md
       - "3 · Spatial transkriptomik": projeler/spatial.md
       - "4 · DepMap / CRISPR ekranları": projeler/depmap.md
