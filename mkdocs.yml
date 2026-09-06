@@ -29,6 +29,7 @@ nav:
       - "1.3 · FASTQ ve kalite skorları": projeler/rna-seq-02.md
       - "1.4 · Kalite kontrol: FastQC": projeler/rna-seq-03.md
       - "1.5 · Kantifikasyon: Salmon": projeler/rna-seq-04.md
+      - "1.6 · Kara kutu: pseudoalignment": projeler/rna-seq-05.md
       - "2 · scRNA-seq (Tek hücre)": projeler/scrna.md
       - "3 · Spatial transkriptomik": projeler/spatial.md
       - "4 · DepMap / CRISPR ekranları": projeler/depmap.md
