@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+
+/* ---------- Pastel lila renk şeması ---------- */
+[data-md-color-scheme="lila"] {
+  --md-default-bg-color: #FBFAFE;
+  --md-default-fg-color: #2E2A3A;
+  --md-default-fg-color--light: #6F6A80;
+  --md-default-fg-color--lighter: #948FA6;
+  --md-default-fg-color--lightest: #EFEBF7;
+  --md-primary-fg-color: #F5F1FB;
+  --md-primary-bg-color: #2E2A3A;
+  --md-primary-bg-color--light: #6F6A80;
+  --md-accent-fg-color: #7C5CBF;
+  --md-typeset-color: #2E2A3A;
+  --md-typeset-a-color: #6B4FB3;
+  --md-code-bg-color: #F3EFFA;
+  --md-code-fg-color: #4A3F66;
+  --md-typeset-mark-color: #E7DDF7;
+  --md-footer-bg-color: #F5F1FB;
+  --md-footer-bg-color--dark: #EFEBF7;
+  --md-footer-fg-color: #2E2A3A;
+  --md-footer-fg-color--light: #6F6A80;
+  --md-footer-fg-color--lighter: #948FA6;
+  --ba-line: #E7E1F2;
+  --ba-mor: #6B4FB3;
+}
+
+/* ---------- Sade görünüm ---------- */
+.md-header { box-shadow: none; border-bottom: 1px solid var(--ba-line); }
+.md-tabs { border-bottom: 1px solid var(--ba-line); }
+.md-typeset h1, .md-typeset h2, .md-typeset h3 {
+  font-family: 'Bricolage Grotesque', 'IBM Plex Sans', sans-serif;
+  font-weight: 700; letter-spacing: -.01em; color: var(--md-default-fg-color);
+}
+.md-typeset .md-button--primary {
+  background-color: var(--ba-mor); border-color: var(--ba-mor); color: #fff;
+}
+.md-typeset .md-button--primary:hover {
+  background-color: #57409A; border-color: #57409A; color: #fff;
+}
+.md-typeset .md-button { border-radius: 999px; }
+
+.ba-chip {
+  display: inline-block; font-size: .62rem; font-family: 'IBM Plex Mono', monospace;
+  padding: .1rem .5rem; border-radius: 999px; vertical-align: middle;
+  background: #EFEBF7; color: #57409A; border: 1px solid var(--ba-line);
+}
+.ba-chip--aktif { background: #E4F3EA; color: #23744B; border-color: #CBE7D6; }
+
+/* ---------- Ana sayfa ---------- */
+.ba-hero { padding: 2.4rem 0 1.6rem; }
+.ba-eyebrow {
+  font-family: 'IBM Plex Mono', monospace; font-size: .62rem;
+  letter-spacing: .14em; color: var(--ba-mor); margin: 0 0 .8rem;
+}
+.md-typeset .ba-hero h1 {
+  font-size: clamp(2rem, 6vw, 3.4rem); line-height: 1.02; font-weight: 800;
+  margin: 0 0 .8rem; max-width: 22ch;
+}
+.ba-lead { font-size: .9rem; color: var(--md-default-fg-color--light); max-width: 34rem; margin: 0 0 1.4rem; }
+
+/* İkincil düğme açık zeminde görünür olsun */
+.md-typeset .md-button:not(.md-button--primary) {
+  color: var(--ba-mor); border-color: var(--ba-mor);
+}
+.md-typeset .md-button:not(.md-button--primary):hover {
+  background: #EFEBF7; color: #57409A; border-color: #57409A;
+}
+
+/* Atlas durum rozeti: gri = sadece atlas */
+.ba-chip--yok { background: #F1F0F4; color: #6F6A80; border-color: #E2E0EA; }
+
+/* Tüm bilgi kutuları pastel lila */
+.md-typeset .admonition, .md-typeset details {
+  border-color: #C9BCE8 !important;
+}
+.md-typeset .admonition > .admonition-title,
+.md-typeset details > summary {
+  background-color: #F3EFFA !important;
+  color: #57409A;
+}
+.md-typeset .admonition > .admonition-title::before,
+.md-typeset details > summary::before {
+  background-color: #6B4FB3 !important;
+}
+
+/* Logo simgesi tamamen kaldırıldı; yalnızca site adı */
+.md-header__button.md-logo, .md-nav__button.md-logo { display: none !important; }
+
+/* Bilgi kutularında simge yok */
+.md-typeset .admonition > .admonition-title::before,
+.md-typeset details > summary::before { display: none !important; }
+.md-typeset .admonition > .admonition-title,
+.md-typeset details > summary { padding-left: .8rem !important; }
+
+/* Hakkında fotoğrafı */
+.md-typeset img.foto { width: 240px; max-width: 70%; border-radius: 14px; }
