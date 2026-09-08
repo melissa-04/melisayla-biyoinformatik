@@ -39,6 +39,7 @@ nav:
       - "1.13 · Kapanış: uçtan uca": projeler/rna-seq-12.md
       - "2 · scRNA-seq (Tek hücre)": projeler/scrna.md
       - "2.1 · Veri mutfağı: PBMC3k": projeler/scrna-01.md
+      - "2.2 · Normalizasyon ve değişken genler": projeler/scrna-02.md
       - "3 · Spatial transkriptomik": projeler/spatial.md
       - "4 · DepMap / CRISPR ekranları": projeler/depmap.md
       - "5 · Klinik varyant yorumlama": projeler/varyant-cagirma.md
