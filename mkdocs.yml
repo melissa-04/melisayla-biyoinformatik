@@ -53,6 +53,7 @@ nav:
       - "4.1 · Veri mutfağı: DepMap": projeler/depmap-01.md
       - "4.2 · Tabloyu tanımak: dağılım": projeler/depmap-02.md
       - "4.3 · Bir genin profili: KRAS": projeler/depmap-03.md
+      - "4.4 · Seçici bağımlılıklar": projeler/depmap-04.md
       - "5 · Klinik varyant yorumlama": projeler/varyant-cagirma.md
       - "6 · GWAS (Popülasyon)": projeler/gwas.md
   - Analiz Atlası:
