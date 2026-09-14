@@ -33,7 +33,7 @@ Tam matris 400 MB'ın üzerinde, her defterde indirilemez. Alt kümeyi üç par�
 
 Ortadaki adım ilginç bir sonuç verdi: en düşük medyanlı 500 genin **hepsi** zaten en değişken 4.000'in içindeydi, yani ayrıca eklenecek gen kalmadı. Sebebi düşünmeye değer. Ortak esansiyel genler her hatta ölümcüldür ama ölümcüllüğün derecesi hattan hatta oynar; −1,5 ile −3,5 arasında gezinen bir gen, sıfır çevresinde titreşen bir genden çok daha yüksek standart sapmaya sahiptir. Yani varyansa göre seçim, esansiyel genleri kendiliğinden içine alır.
 
-Rastgele 1.000 geni bu yüzden ekledik: yalnız yüksek varyanslı genlerle çalışırsanız, DepMap'in en temel gerçeğini göremezsiniz — herhangi bir hücre hattında genlerin büyük çoğunluğu vazgeçilebilirdir ve skorları sıfır etrafında toplanır. Alt küme 1.208 hat × 5.000 gen, yaklaşık 80 MB.
+Rastgele 1.000 geni bu yüzden ekledik: yalnız yüksek varyanslı genlerle çalışırsanız, DepMap'in en temel gerçeğini göremezsiniz — herhangi bir hücre hattında genlerin büyük çoğunluğu vazgeçilebilirdir ve skorları sıfır etrafında toplanır. Alt küme 1.208 hat × 5.000 gen ve 40,5 MB — kendi DOI'sinde yayımlandı: [10.5281/zenodo.22759375](https://doi.org/10.5281/zenodo.22759375). Sonraki bütün defterler veriyi doğrudan oradan okuyacak.
 
 ## Neler ters gider?
 
