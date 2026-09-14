@@ -1,25 +1,3 @@
 # 3 · Spatial transkriptomik
 
-!!! question "Projenin sorusu"
-    Hücre tipleri dokunun neresinde, birbirleriyle nasıl komşuluk ediyor ve ifade dokuya göre nasıl değişiyor?
-
-**Veri:** 10x'in halka açık Visium örnekleri ve Squidpy ile gelen veri setleri.
-
-**Araçlar:** Squidpy, Scanpy; scRNA projesindeki kavramların üstüne kurulur — önce 2. projeyi bitir.
-
-## Çekirdek yol
-
-1. Spatial teknolojiler: dizileme ve görüntüleme tabanlı yaklaşımlar
-2. Visium veri yapısı: spot, doku görüntüsü, matris
-3. Kalite kontrol ve ön işleme
-4. Kümeleme ve doku bölgeleri
-5. scRNA referansıyla hücre tipi atama
-6. Uzamsal değişken genlere (SVG) giriş
-7. Doku üzerinde görselleştirme
-8. Yorum, sınırlar ve bitirme projesi
-
-## İleri modüller
-
-Çekirdek yol tamamlandıkça eklenecek derinleşmeler:
-
-Spot dekonvolüsyonu (cell2location) · SVG analizinin derinleri · Niche / mikroçevre analizi · scRNA ↔ spatial entegrasyonu (Tangram)
+Serinin üçüncü projesi: 10x Genomics'in Visium platformuyla üretilmiş yetişkin fare beyni kesiti üzerinden, veri mutfağından uzamsal desenlerin okunmasına uzanan bir yolculuk. İkinci proje hücreleri tek tek okumayı öğretti ama dokunun mimarisini kaybetmişti; bu proje koordinatları geri getiriyor. Soldaki 3.1'den başlayın; defterler Colab'da açılır ve veri, DOI'li kalıcı adresinden okunur: 10.5281/zenodo.22758390.
