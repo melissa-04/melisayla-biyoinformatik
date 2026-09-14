@@ -47,6 +47,7 @@ nav:
       - "3 · Spatial transkriptomik": projeler/spatial.md
       - "3.1 · Veri mutfağı: Visium": projeler/spatial-01.md
       - "3.2 · Uzamsal kümeleme": projeler/spatial-02.md
+      - "3.3 · Uzamsal olarak değişken genler": projeler/spatial-03.md
       - "4 · DepMap / CRISPR ekranları": projeler/depmap.md
       - "5 · Klinik varyant yorumlama": projeler/varyant-cagirma.md
       - "6 · GWAS (Popülasyon)": projeler/gwas.md
