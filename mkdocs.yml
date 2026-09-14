@@ -51,6 +51,7 @@ nav:
       - "3.4 · Bölgeler ve komşuluk": projeler/spatial-04.md
       - "4 · DepMap / CRISPR ekranları": projeler/depmap.md
       - "4.1 · Veri mutfağı: DepMap": projeler/depmap-01.md
+      - "4.2 · Tabloyu tanımak: dağılım": projeler/depmap-02.md
       - "5 · Klinik varyant yorumlama": projeler/varyant-cagirma.md
       - "6 · GWAS (Popülasyon)": projeler/gwas.md
   - Analiz Atlası:
