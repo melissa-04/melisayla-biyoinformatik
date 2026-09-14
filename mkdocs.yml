@@ -46,6 +46,7 @@ nav:
       - "2.6 · Adlandırılmış harita": projeler/scrna-06.md
       - "3 · Spatial transkriptomik": projeler/spatial.md
       - "3.1 · Veri mutfağı: Visium": projeler/spatial-01.md
+      - "3.2 · Uzamsal kümeleme": projeler/spatial-02.md
       - "4 · DepMap / CRISPR ekranları": projeler/depmap.md
       - "5 · Klinik varyant yorumlama": projeler/varyant-cagirma.md
       - "6 · GWAS (Popülasyon)": projeler/gwas.md
