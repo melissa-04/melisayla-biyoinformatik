@@ -15,6 +15,16 @@ hide:
 [İlk proje: RNA-seq](projeler/rna-seq.md){ .md-button }
 </div>
 
+<div class="grid" markdown>
+
+![Fare beyni kesitinde Mbp ve Hpca genlerinin ifadesi](projeler/gorseller/03_doku_isaretciler.png)
+*Uzamsal transkriptomik: iki gen, dokunun anatomisini kendiliğinden çiziyor.*
+
+![PBMC hücre tiplerinin UMAP haritası](projeler/gorseller/01_umap_hucre_tipleri.png)
+*Tek hücre: 2.694 hücre, dokuz hücre tipi — hepsi gen ifadesinden çıkarıldı.*
+
+</div>
+
 ## Nasıl çalışır?
 
 <div class="grid cards" markdown>
