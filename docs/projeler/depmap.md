@@ -9,6 +9,9 @@ Serinin dördüncü projesi öncekilerden farklı: ham okuma, hizalama, sayım y
 
 **Araçlar:** pandas, numpy, matplotlib/seaborn.
 
+![Genlerin medyan bağımlılık skoru ve hatlar arası değişkenliği](gorseller/06_bagimlilik_haritasi.png)
+*Her nokta bir gen. İyi ilaç hedefleri sol alt köşede değil, mor bölgede aranır.*
+
 ## Çekirdek yol
 
 1. **Veri mutfağı** — CRISPR ekranı çıktısını tanımak, Chronos skorunun ölçeği, alt kümenin çıkarılması ve arşivlenmesi
